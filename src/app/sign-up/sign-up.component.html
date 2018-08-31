@@ -1,0 +1,45 @@
+<html>
+<body>
+
+<div class="example-container">
+  <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <mat-card-content>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="First Name" formControlName="firstName" type="text">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="Last Name" formControlName="lastName" type="text">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="Email" formControlName="emailId" type="email">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="Password" formControlName="password" type="password" [type]="hide ? 'password' :'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-hint >Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</mat-hint>
+
+          </mat-form-field>
+        </p>
+
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!form.valid">Sign Up</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+
+</div>
+
+</body>
+</html>
+

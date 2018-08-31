@@ -1,0 +1,58 @@
+<html>
+<body>
+
+<div class="example-container">
+  <mat-card>
+    <mat-card-title>Sign In</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <mat-card-content>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="Email" formControlName="emailId" type="email">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field color="accent">
+            <input matInput placeholder="Password" formControlName="password" type="password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" [disabled]="!form.valid">Login</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-card style="padding: 0%;margin: 2%" (click)="socialSignIn('google')">
+          <mat-card-content >
+           <mat-list>
+             <mat-list-item style="padding: 0%;margin: 0%">
+             <img src="../../assets/google.png" width="15px" height="15px" mat-list-icon>
+             <p mat-line>Sign In With Google</p>
+             </mat-list-item>
+           </mat-list>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card style="padding: 1%;margin: 2%; margin-bottom: 4%" (click)="socialSignIn('facebook')">
+          <mat-card-content >
+            <mat-list>
+              <mat-list-item style="padding: 0%;margin: 0%">
+                <mat-icon mat-list-icon><i class="fab fa-facebook-square fa-lg"style="color:#3b5998"></i></mat-icon>
+                <p mat-line>Sign In With Facebook</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card >
+        <button mat-raised-button color="primary" style="width: 100%" routerLink="/signUp">Sign Up</button>
+
+      </mat-card-footer>
+    </form>
+
+  </mat-card>
+
+</div>
+
+</body>
+</html>
+
