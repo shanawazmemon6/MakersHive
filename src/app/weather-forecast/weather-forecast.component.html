@@ -1,6 +1,39 @@
 <html>
+<head>
 
+</head>
 <body>
-<p>weatherForecast</p>
+
+<mat-grid-list  [cols]="breakpoint" rowHeight="1:1" (window:resize)="onResize($event)" gutterSize="8px" >
+
+  <mat-grid-tile class=" mat-elevation-z2"  *ngFor="let data of forecast">
+    <mat-grid-tile-header  style="background-color: white;color: black">{{data}}</mat-grid-tile-header>
+
+    <canvas [id]="data+'Chart'">{{chart}}</canvas>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<mat-card>
+  <mat-card-title>Sign In</mat-card-title>
+
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+      <agm-info-window>
+        <div *ngIf="weatherData">
+        <h3>Weather Data</h3>
+        <p>Clouds : {{weatherData.clouds}}</p>
+        <p>Pressure : {{weatherData.pressure}}</p>
+          <p>Degree : {{weatherData.deg}}</p>
+          <p>Rain : {{weatherData.rain}}</p>
+          <p>Speed : {{weatherData.speed}}</p>
+          <p>Temperature : {{weatherData.temp.max}}</p>
+
+        </div>
+      </agm-info-window>
+    </agm-marker>
+
+  </agm-map>
+</mat-card>
 </body>
 </html>

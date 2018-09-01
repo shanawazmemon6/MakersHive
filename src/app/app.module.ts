@@ -6,14 +6,26 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import {HttpModule} from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
+
+
 import { MatButtonModule, MatToolbarModule,
   MatSidenavModule, MatIconModule,
   MatListModule, MatFormFieldModule,
-  MatInputModule, MatCardModule, MatSnackBarModule, MatMenuModule,
+  MatInputModule, MatCardModule, MatSnackBarModule, MatMenuModule,MatGridListModule
 } from '@angular/material';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
+
+import {CookieModule, CookieService} from "ngx-cookie";
+import {AuthServiceService} from "./auth-service.service";
+import {AuthGuard} from "./authguard";
+import {SignUpService} from "./sign-up/sign-up.service";
+import {HttpClient} from "./HttpClient";
+import {WeatherForecastService} from "./weather-forecast/weather-forecast.service";
+
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -49,6 +61,7 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     SocialLoginModule,
     ReactiveFormsModule,
     LayoutModule,
@@ -63,6 +76,11 @@ export function getAuthServiceConfigs() {
     MatCardModule,
     MatSnackBarModule,
     MatMenuModule,
+    MatGridListModule,
+    CookieModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBbJHaGku_3v2Z8jY6adIIsCfckIwV2b_U'
+    }),
     RouterModule.forRoot([
       {
         path: '',
@@ -74,14 +92,14 @@ export function getAuthServiceConfigs() {
       },
       {
         path:'weatherForecast',
-        component:WeatherForecastComponent
+        component:WeatherForecastComponent,
+        canActivate: [AuthGuard]
+
       }
     ])
   ],
-  providers: [{
-    provide: AuthServiceConfig,
-    useFactory: getAuthServiceConfigs
-  }],
+  providers: [{provide: AuthServiceConfig, useFactory: getAuthServiceConfigs},CookieService,AuthServiceService,AuthGuard,
+    SignUpService,HttpClient,WeatherForecastService],
   bootstrap: [AppComponent]
 })
 
