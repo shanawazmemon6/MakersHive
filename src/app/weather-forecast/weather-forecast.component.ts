@@ -38,6 +38,12 @@ export class WeatherForecastComponent implements OnInit {
       } ));
     } else {
     }
+    navigator.mediaDevices.getUserMedia({ audio: true }) .then(function(stream) {
+      console.log('You let me use your mic!')
+    })
+      .catch(function(err) {
+        console.log('No mic for you!')
+      });
 
 
     Notification.requestPermission(function (result) {
@@ -48,11 +54,7 @@ export class WeatherForecastComponent implements OnInit {
         console.log('The permission request was dismissed.');
         return;
       }
-       new Notification("Weather Data", {
-        body: "",
-        icon: 'https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Weather-512.png',
-        dir: 'auto'
-      });
+
 
       setInterval(function(){  new Notification("Weather Data", {
         body: "",

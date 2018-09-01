@@ -25,6 +25,10 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (this.cookie.getObject('login') !== undefined) {
+      this.router.navigate(['weatherForecast'])
+    }
     this.sign=new signUp();
     this.form = new FormGroup({
       emailId: new FormControl('', Validators.compose([
