@@ -1,0 +1,53 @@
+[debug] [2018-09-02T09:25:10.144Z] ----------------------------------------------------------------------
+[debug] [2018-09-02T09:25:10.161Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\shana\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] [2018-09-02T09:25:10.162Z] CLI Version:   3.17.3
+[debug] [2018-09-02T09:25:10.163Z] Platform:      win32
+[debug] [2018-09-02T09:25:10.163Z] Node Version:  v8.11.3
+[debug] [2018-09-02T09:25:10.166Z] Time:          Sun Sep 02 2018 14:55:10 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:10.167Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-02T09:25:10.251Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-02T09:25:10.253Z] > authorizing via signed-in user
+[debug] [2018-09-02T09:25:10.258Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-02T09:25:10.259Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nYt4D_bmPyM6Bxd62G9qT098tNgJTh3NTPy_y0Mi9YGR-ngAzeaSy-sW5cZ0tuMg',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Sep 02 2018 14:55:10 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:11.299Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-02T09:25:11.387Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/project-2fdc9  
+  
+ Sun Sep 02 2018 14:55:11 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:12.815Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-02T09:25:12.818Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/project-2fdc9/tokens  
+  
+ Sun Sep 02 2018 14:55:12 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:13.802Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'project-2fdc9'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-09-02T09:25:16.087Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/project-2fdc9/uploads/-LLOaRm6CwBq3g3f1CxP?fileCount=16&message=  
+  
+ Sun Sep 02 2018 14:55:16 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:21.993Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-02T09:25:21.995Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] +  hosting: 16 files uploaded successfully
+[debug] [2018-09-02T09:25:22.848Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/project-2fdc9/releases  
+ { hosting: 
+   { public: 'dist',
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     rewrites: [ [Object] ],
+     version: '-LLOaRm6CwBq3g3f1CxP',
+     prefix: '-LLOaRm6CwBq3g3f1CxP/',
+     manifest: [] } } 
+ Sun Sep 02 2018 14:55:22 GMT+0530 (India Standard Time)
+[debug] [2018-09-02T09:25:24.664Z] <<< HTTP RESPONSE 200
+[info] 
+[info] +  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/project-2fdc9/overview
+[info] Hosting URL: https://project-2fdc9.firebaseapp.com
