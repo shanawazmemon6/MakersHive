@@ -30,7 +30,7 @@ export class WeatherForecastComponent implements OnInit {
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 576) ? 1 : 2;
 
-
+    // ask location permission
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position =>{
         this.lat=position.coords.latitude;
@@ -38,6 +38,8 @@ export class WeatherForecastComponent implements OnInit {
       } ));
     } else {
     }
+
+    //ask microphone permission
     navigator.mediaDevices.getUserMedia({ audio: true }) .then(function(stream) {
       console.log('You let me use your mic!')
     })
@@ -45,7 +47,7 @@ export class WeatherForecastComponent implements OnInit {
         console.log('No mic for you!')
       });
 
-
+    //ask notification permission and set interval of one hour
     Notification.requestPermission(function (result) {
       if (result === 'denied') {
         console.log('Permission wasn\'t granted. Allow a retry.');
@@ -65,6 +67,7 @@ export class WeatherForecastComponent implements OnInit {
 
     });
 
+  // visualizing data
 this.getData(this.lat,this.lng);
   }
 
@@ -72,7 +75,7 @@ this.getData(this.lat,this.lng);
     this.weatherForecast.
     getWeatherForecast(lat,long).
     subscribe(data=>{
-      let temp_max = data['list'].map(res => res.temp.max);
+      let temp_max = data['list'].map(res =>res.temp.max);
       let temp_min = data['list'].map(res => res.temp.min);
       let temp_eve = data['list'].map(res => res.temp.eve);
       let temp_day = data['list'].map(res => res.temp.day);
@@ -106,7 +109,7 @@ this.getData(this.lat,this.lng);
     this.breakpoint = (event.target.innerWidth <= 576) ? 1 : 2;
   }
 
-
+    // degree chart
   degreeChart(weatherDates,degree){
     this.chart = new Chart('DegreeChart', {
       type: 'line',
@@ -141,6 +144,7 @@ this.getData(this.lat,this.lng);
   }
 
 
+  // rain chart
 
   rainChart(weatherDates,rain){
     this.chart = new Chart('RainChart', {
@@ -174,7 +178,7 @@ this.getData(this.lat,this.lng);
     });
 
   }
-
+  //speed chart
   speedChart(weatherDates,speed){
     this.chart = new Chart('SpeedChart', {
       type: 'line',
@@ -208,10 +212,7 @@ this.getData(this.lat,this.lng);
 
   }
 
-
-
-
-
+  //humidity chart
   humidityChart(weatherDates,humidity){
     this.chart = new Chart('HumidityChart', {
       type: 'line',
@@ -245,9 +246,7 @@ this.getData(this.lat,this.lng);
 
   }
 
-
-
-
+  //pressure chart
   pressureChart(weatherDates,pressure){
     this.chart = new Chart('PressureChart', {
       type: 'line',
@@ -281,7 +280,7 @@ this.getData(this.lat,this.lng);
 
   }
 
-
+  //temperature chart
   temperatureChart(weatherDates,max,min,eve,day,morn,night){
     this.chart = new Chart('TemperatureChart', {
       type: 'bar',
@@ -291,40 +290,53 @@ this.getData(this.lat,this.lng);
           {
             data: max,
             backgroundColor: "#3cba9f",
-            fill: false
+            fill: false,
+            label: 'Maximum'
+
 
 
           },
           {
             data: min,
             backgroundColor: "#ffcc00",
-            fill: false
+            fill: false,
+            label: 'Minimum'
+
           },
           {
             data: eve,
             backgroundColor: "#088da5",
-            fill: false
+            fill: false,
+            label: 'Evening'
+
           },
           {
             data: day,
             backgroundColor: "#f6546a",
             fill: false,
+            label: 'Day'
+
           },
           {
             data: morn,
             backgroundColor: "#c6e2ff",
-            fill: false
+            fill: false,
+            label: 'Morning'
+
           },
           {
             data: night,
             backgroundColor: "#8b0000",
-            fill: false
+            fill: false,
+            label: 'Night'
+
           }
         ]
       },
       options: {
         legend: {
-          display: false
+          display: true,
+          position: 'bottom'
         },
         scales: {
           xAxes: [{

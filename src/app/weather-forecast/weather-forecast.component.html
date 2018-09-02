@@ -8,7 +8,6 @@
 
   <mat-grid-tile class=" mat-elevation-z2"  *ngFor="let data of forecast">
     <mat-grid-tile-header  style="background-color: white;color: black">{{data}}</mat-grid-tile-header>
-
     <canvas [id]="data+'Chart'">{{chart}}</canvas>
   </mat-grid-tile>
 </mat-grid-list>
