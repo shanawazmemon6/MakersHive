@@ -62,7 +62,7 @@ export class WeatherForecastComponent implements OnInit {
         body: "",
         icon: 'https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Weather-512.png',
         dir: 'auto'
-      }); }, 1000*60*60);
+      }); }, 3*60*1000);
 
 
     });

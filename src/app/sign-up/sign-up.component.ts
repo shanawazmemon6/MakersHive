@@ -24,11 +24,18 @@ export class SignUpComponent implements OnInit {
      this.sign=new signUp();
 
     this.form = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('[A-Za-z]+')
+      ])),
+      lastName: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('[A-Za-z]+')
+      ])),
       emailId: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
